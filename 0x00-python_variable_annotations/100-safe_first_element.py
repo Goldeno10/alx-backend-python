@@ -2,10 +2,10 @@
 '''
 task: Augment the following code with the correct duck-typed annotations
 '''
-from typing import Any, Optional, List
+from typing import Any, Sequence, Union
 
 
-def safe_first_element(lst: List) -> Optional[Any]:
+def safe_first_element(lst: Sequence[Any]) -> Union[Any, None]:
     '''
     funtion wih corrected duck-typed annotations
     '''
