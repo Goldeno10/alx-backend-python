@@ -2,10 +2,10 @@
 '''
 Contain a type-annotated function element_length
 '''
-from typing import List, Tuple
+from typing import  Iterable,List, Tuple, Sequence
 
 
-def element_length(lst: List[str]) -> List[Tuple[str, int]]:
+def element_length(lst: Iterable[Sequence[str]]) -> List[Tuple[Sequence[str], int]]:
     '''
     Return a list of tuple of int
     '''
