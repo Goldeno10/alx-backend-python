@@ -3,10 +3,10 @@
 Task: Use mypy to validate the following piece of code and apply
 any necessary changes.
 '''
-from typing import List
+from typing import List, Tuple
 
 
-def zoom_array(lst: List[int], factor: int = 2) -> List[int]:
+def zoom_array(lst: Tuple, factor: int = 2) -> List:
     '''Function with add type annotations.'''
     zoomed_in: List[int] = [
         item for item in lst
