@@ -9,7 +9,7 @@ Task:
 
 import asyncio
 import random
-from typing import Iterator
+from collections.abc import Iterator
 
 async def async_generator() -> Iterator[float]:
     """
