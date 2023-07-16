@@ -8,7 +8,7 @@ from typing import List, Tuple
 
 def zoom_array(lst: Tuple, factor: int = 2) -> List:
     '''Function with add type annotations.'''
-    zoomed_in: List[int] = [
+    zoomed_in: Tuple = [
         item for item in lst
         for i in range(factor)
     ]
