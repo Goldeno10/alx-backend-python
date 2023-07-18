@@ -8,11 +8,10 @@ Task:
 """
 
 import asyncio
-from collections.abc import AsyncGenerator
 import random
 
 
-async def async_generator() -> AsyncGenerator[float, None]:
+async def async_generator():
     """
     This coroutine will loop 10 times, each time asynchronously
     wait 1 second, then yield a random number between 0 and 10
