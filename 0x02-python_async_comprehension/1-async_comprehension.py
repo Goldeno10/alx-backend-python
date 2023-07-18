@@ -21,3 +21,4 @@ async def async_comprehension():
     """
     random_numbers = [number async for number in async_generator()]
     return random_numbers
+00
