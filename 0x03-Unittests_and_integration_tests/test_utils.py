@@ -25,8 +25,8 @@ class TestAccessNestedMap(unittest.TestCase):
         with self.assertRaises(KeyError) as context:
             access_nested_map(nested_map, path)
 
-        # Check that the exception message is as expected
-        self.assertEqual(
-            str(context.exception),
-            f"Key not found: {path[-1]}"
-        )
+            # Check that the exception message is as expected
+            self.assertEqual(
+                str(context.exception),
+                f"Key not found: {path[-1]}"
+            )
