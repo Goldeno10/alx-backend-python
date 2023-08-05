@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Parameterize a unit test """
+"""utils test cases module"""
 import unittest
 from parameterized import parameterized
 from unittest.mock import patch, Mock
