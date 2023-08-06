@@ -40,7 +40,7 @@ class TestGithubOrgClient(unittest.TestCase):
                 "repos_url": f"https://api.github.com/orgs/{org_name}/repos"
             }
         )
-    
+
     @patch('client.get_json')
     def test_public_repos_url(self, mock_get_json):
         """public_repos_url() test method"""
@@ -55,12 +55,15 @@ class TestGithubOrgClient(unittest.TestCase):
         # Access the _public_repos_url property
         result = client._public_repos_url
 
-        # Assert that the mocked get_json is called once with the expected argument
-        mock_get_json.assert_called_once_with(GithubOrgClient.ORG_URL.format(org=org_name))
+        # Assert that the mocked get_json is called once
+        # with the expected argument
+        mock_get_json.assert_called_once_with(
+            GithubOrgClient.ORG_URL.format(org=org_name)
+        )
 
         # Assert that the result is correct
         self.assertEqual(result, repos_url)
-    
+
     @patch('client.get_json')
     def test_public_repos(self, mock_get_json):
         org_name = "testorg"
@@ -73,7 +76,11 @@ class TestGithubOrgClient(unittest.TestCase):
         client = GithubOrgClient(org_name)
 
         # Use patch as a context manager to mock _public_repos_url property
-        with patch.object(client, '_public_repos_url', new_callable=PropertyMock) as mock_repos_url:
+        with patch.object(
+                          client,
+                          '_public_repos_url', new_callable=PropertyMock
+                          ) as mock_repos_url:
+
             mock_repos_url.return_value = repos_url
 
             # Call the public_repos method
@@ -82,13 +89,13 @@ class TestGithubOrgClient(unittest.TestCase):
             # Assert that the mocked _public_repos_url property is called once
             mock_repos_url.assert_called_once()
 
-        # Assert that the mocked get_json is called once with the expected argument
+        # Assert that the mocked get_json is called once
+        # with the expected argument
         mock_get_json.assert_called_once_with(repos_url)
 
         # Assert that the result is correct
         self.assertEqual(result, ["repo1", "repo2"])
 
-    
     @parameterized.expand([
         ({"license": {"key": "my_license"}}, "my_license", True),
         ({"license": {"key": "other_license"}}, "my_license", False),
@@ -104,7 +111,11 @@ class TestGithubOrgClient(unittest.TestCase):
         # Assert that the result is correct
         self.assertEqual(result, expected_result)
 
-@parameterized_class('org_payload', 'repos_payload', 'expected_repos', 'apache2_repos')
+
+@parameterized_class('org_payload',
+                     'repos_payload',
+                     'expected_repos',
+                     'apache2_repos')
 class TestIntegrationGithubOrgClient(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
@@ -130,7 +141,8 @@ class TestIntegrationGithubOrgClient(unittest.TestCase):
         # Call the public_repos method
         result = client.public_repos()
 
-        # Assert that the mocked requests.get is called with the expected argument
+        # Assert that the mocked requests.get is called with
+        # the expected argument
         self.mock_get.assert_called_with(self.org_payload["repos_url"])
 
         # Assert that the result is correct
