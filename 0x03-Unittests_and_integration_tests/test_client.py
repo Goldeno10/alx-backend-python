@@ -154,6 +154,7 @@ class TestIntegrationGithubOrgClient(unittest.TestCase):
         self.assertEqual(result, self.expected_repos)
 
     def test_public_repos_with_license(self):
+        """_public_repos_with_license() test method"""
         # Set up mock for requests.get(url).json() side_effect
         self.mock_get.side_effect = [
             # Mock the response for org method
