@@ -152,7 +152,7 @@ class TestIntegrationGithubOrgClient(unittest.TestCase):
 
         # Assert that the result is correct
         self.assertEqual(result, self.expected_repos)
-    
+
     def test_public_repos_with_license(self):
         # Set up mock for requests.get(url).json() side_effect
         self.mock_get.side_effect = [
@@ -168,7 +168,8 @@ class TestIntegrationGithubOrgClient(unittest.TestCase):
         # Call the public_repos method with license="apache-2.0"
         result = client.public_repos(license="apache-2.0")
 
-        # Assert that the mocked requests.get is called with the expected argument
+        # Assert that the mocked requests.get is called with
+        # the expected argument
         self.mock_get.assert_called_with(self.org_payload["repos_url"])
 
         # Assert that the result is correct
