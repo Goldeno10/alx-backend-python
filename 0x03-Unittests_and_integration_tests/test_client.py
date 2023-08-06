@@ -101,6 +101,7 @@ class TestGithubOrgClient(unittest.TestCase):
         ({"license": {"key": "other_license"}}, "my_license", False),
     ])
     def test_has_license(self, repo, license_key, expected_result):
+        """Test for _has_license() method"""
         """has_license() methodd test method"""
         # Create an instance of GithubOrgClient
         client = GithubOrgClient("testorg")
@@ -117,16 +118,20 @@ class TestGithubOrgClient(unittest.TestCase):
                      'expected_repos',
                      'apache2_repos')
 class TestIntegrationGithubOrgClient(unittest.TestCase):
+    """GithubOrgClient intestegration test class"""
     @classmethod
     def setUpClass(cls):
+        """test class setup method"""
         cls.get_patcher = patch('client.requests.get')
         cls.mock_get = cls.get_patcher.start()
 
     @classmethod
     def tearDownClass(cls):
+        """test class teardowm method"""
         cls.get_patcher.stop()
 
     def test_public_repos(self):
+        """_public_repos() test method"""
         # Set up mock for requests.get(url).json() side_effect
         self.mock_get.side_effect = [
             # Mock the response for org method
